@@ -11,7 +11,7 @@ import type { Route } from "./+types/root";
 import "./app.css";
 
 export const links: Route.LinksFunction = () => [
-  { rel: "icon", type: "image/png", href: "/favicon.png" },
+  { rel: "icon", type: "image/png", href: `${import.meta.env.BASE_URL}favicon.png` },
   { rel: "preconnect", href: "https://fonts.googleapis.com" },
   {
     rel: "preconnect",
@@ -30,6 +30,11 @@ export function Layout({ children }: { children: React.ReactNode }) {
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(l){if(l.search[1]==='\/'){var d=l.search.slice(1).split('&').map(function(s){return s.replace(/~and~/g,'&')});window.history.replaceState(null,null,l.pathname.slice(0,-1)+d[0]+(d[1]?'?'+d[1]:'')+l.hash)}}(window.location))`,
+          }}
+        />
         <Meta />
         <Links />
       </head>
