@@ -23,11 +23,20 @@ export default function Home() {
       </div>
 
       <div className="flex flex-col sm:flex-row gap-5 w-full max-w-xl">
-        <div
-          className="flex-1 rounded-xl border p-10 flex flex-col items-center gap-4 opacity-40 cursor-not-allowed select-none"
+        <Link
+          to="/sorteador"
+          className="flex-1 rounded-xl border p-10 flex flex-col items-center gap-4 transition-all duration-200"
           style={{
             backgroundColor: "var(--color-card)",
             borderColor: "var(--color-border)",
+          }}
+          onMouseEnter={(e) => {
+            (e.currentTarget as HTMLElement).style.borderColor = "var(--color-primary)";
+            (e.currentTarget as HTMLElement).style.boxShadow = "0 4px 20px rgba(10,102,194,0.12)";
+          }}
+          onMouseLeave={(e) => {
+            (e.currentTarget as HTMLElement).style.borderColor = "var(--color-border)";
+            (e.currentTarget as HTMLElement).style.boxShadow = "none";
           }}
         >
           <span className="text-5xl">🎲</span>
@@ -36,10 +45,10 @@ export default function Home() {
               Sorteador
             </p>
             <p className="text-sm mt-1" style={{ color: "var(--color-ink-muted)" }}>
-              Em breve
+              Sorteie os números do bingo
             </p>
           </div>
-        </div>
+        </Link>
 
         <Link
           to="/cartela"
